@@ -7,7 +7,8 @@ import nav from '../_nav';
 import routes from '../views';
 import ContextProviders from '../vibe/components/utilities/ContextProviders';
 import handleKeyAccessibility, { handleClickAccessibility } from '../vibe/helpers/handleTabAccessibility';
-
+import {useSelector, useDispatch} from 'react-redux'
+import { logout  } from './../actions/'
 const MOBILE_SIZE = 992;
 
 export default class DashboardLayout extends Component {
@@ -93,14 +94,16 @@ export default class DashboardLayout extends Component {
 }
 
 function HeaderNav() {
+  let user = useSelector(state=>state.loggedUser)
+  const dispatch = useDispatch()
   return (
     <React.Fragment>
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          Welcome
+          Welcome {user.user}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>User</DropdownItem>
+        <DropdownItem onClick={()=>dispatch(logout(false))}>Logout</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </React.Fragment>
