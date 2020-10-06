@@ -6,21 +6,29 @@ import { login, loggedUser } from './../actions/'
 function Login() {
   const dispatch = useDispatch()
   const [user, setUser] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError]= useState(false)
   let log = () => {
-    dispatch(login(true))
-    dispatch(loggedUser({user}))
+    if(password.length > 0 && user.length > 0){
+      dispatch(login(true))
+      dispatch(loggedUser({user}))
+      setError(false)
+    }else{
+      setError(true)
+    }
   }
   return (
     <Container className="mt-5">
       <Form>
         <FormGroup>
           <Label for="exampleEmail">Email</Label>
-          <Input type="email" name="email" id="exampleEmail" value={user} onChange={e => setUser(e.target.value)} placeholder="with a placeholder" />
+          <Input type="text" name="email" id="exampleEmail" value={user} onChange={e => setUser(e.target.value)} placeholder="Email or Username" />
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+          <Input type="password" name="password" id="examplePassword" value={password} onChange={e => setPassword(e.target.value)}  placeholder="password placeholder" />
         </FormGroup>
+        {error ? <p className="text-danger">Some values are invalid, please try again</p> : null}
         <Button onClick={()=>log()}>Login</Button>
       </Form>
     </Container>
