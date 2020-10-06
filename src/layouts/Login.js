@@ -29,7 +29,7 @@ function Login() {
           <Input type="password" name="password" id="examplePassword" value={password} onChange={e => setPassword(e.target.value)}  placeholder="password placeholder" />
         </FormGroup>
         {error ? <p className="text-danger">Some values are invalid, please try again</p> : null}
-        <Button onClick={()=>log()}>Login</Button>
+        <Button color='primary' onClick={()=>log()}>Login</Button>
       </Form>
     </Container>
   );
