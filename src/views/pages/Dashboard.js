@@ -16,11 +16,7 @@ class Dashboard extends Component {
         <Row>
           <Col md={6}>
             <div className="home-hero" style={heroStyles}>
-              <h1>Welcome to Vibe.</h1>
-              <p className="text-muted">
-                Discover this UI dashboard framework that will help speed up
-                your next web application project.
-              </p>
+              <h1>Welcome to React challenge!</h1>
             </div>
           </Col>
         </Row>
@@ -37,7 +33,7 @@ class Dashboard extends Component {
                 <div className="m-l">
                   <h2 className="h4">React.js</h2>
                   <p className="text-muted">
-                    Built to quickly get your MVPs off the ground.
+                    Using react and redux to share data between components!
                   </p>
                 </div>
               </CardBody>
@@ -63,24 +59,6 @@ class Dashboard extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
-            <Card>
-              <CardBody className="display-flex">
-                <img
-                  src={sassFeature}
-                  style={{ width: 70, height: 70 }}
-                  alt="Sass"
-                  aria-hidden={true}
-                />
-                <div className="m-l">
-                  <h2 className="h4">Sass</h2>
-                  <p className="text-muted">
-                    Easily change the design system styles to fit your needs.
-                  </p>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
           <Col md={6}>
             <Card>
               <CardBody className="display-flex">

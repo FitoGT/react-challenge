@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import { Button, Row, FormGroup, Label, Input, Col } from 'reactstrap';
 import { addProduct } from './../../../actions'
 import { useDispatch } from 'react-redux'
-export default function Create(props) {
+function Create(props) {
+  const dispatch = useDispatch()
+
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [image, setImage] = useState('')
-  const dispatch = useDispatch()
+  let create = () => {
+    if(name.length > 0 && price.length > 0 && image.length > 0){
+      dispatch(addProduct({name,price,image}))
+      props.showCreateForm(false)
+    }else{
+    }
+  }
   return (
 
     <Row>
+      <Col sm="12" className="mb-5">
+        <h3>Create your Product</h3>
+      </Col>
       <Col lg="6"  sm="12">
         <FormGroup>
           <Label for="name">Name</Label>
@@ -30,9 +41,14 @@ export default function Create(props) {
       </Col>
       <Col sm="12">
         <FormGroup>
-            <Button color="primary" onClick={()=>dispatch(addProduct({name,price,image}))}>Save</Button>
+            <Button color="primary" onClick={()=>create()}>Save</Button>
+            {' '}
+            <Button color="primary" onClick={()=>props.showCreateForm(false)}>List</Button>
+
         </FormGroup>
       </Col>
     </Row>
   )
 }
+
+export default Create
