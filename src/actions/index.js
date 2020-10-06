@@ -3,6 +3,16 @@ export const addProduct = (data) =>({
     payload:data
 })
 
+export const deleteProduct = (data) =>({
+    type:'DELETE_PRODUCTS',
+    payload:data
+})
+
+export const updateProduct = (data) =>({
+    type:'UPDATE_PRODUCTS',
+    payload:data
+})
+
 export const login = (data) =>({
     type:'LOGIN',
     payload:data
