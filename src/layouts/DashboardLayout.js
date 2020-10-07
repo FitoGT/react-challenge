@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Header, SidebarNav, PageContent, Page} from '../vibe';
+import { Header, SidebarNav, PageContent, Page } from '../vibe';
 import Logo from '../assets/images/vibe-logo.svg';
 import nav from '../_nav';
 import routes from '../views';
 import ContextProviders from '../vibe/components/utilities/ContextProviders';
 import handleKeyAccessibility, { handleClickAccessibility } from '../vibe/helpers/handleTabAccessibility';
-import {useSelector, useDispatch} from 'react-redux'
-import { logout  } from './../actions/'
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from './../actions/';
 const MOBILE_SIZE = 992;
 
 export default class DashboardLayout extends Component {
@@ -94,8 +94,9 @@ export default class DashboardLayout extends Component {
 }
 
 function HeaderNav() {
-  let user = useSelector(state=>state.loggedUser)
-  const dispatch = useDispatch()
+  let user = useSelector(state => state.loggedUser);
+  let items = useSelector(state => state.cart);
+  const dispatch = useDispatch();
   const history = useHistory();
   return (
     <React.Fragment>
@@ -104,7 +105,24 @@ function HeaderNav() {
           Welcome {user.user}
         </DropdownToggle>
         <DropdownMenu right>
-        <DropdownItem onClick={()=>{dispatch(logout(false)); history.push('/home')}}>Logout</DropdownItem>
+          <DropdownItem
+            onClick={() => {
+              dispatch(logout(false));
+              history.push('/home');
+            }}
+          >
+            Logout
+          </DropdownItem>
+          {!user.admin ? <DropdownItem>Items in Cart {items.length}</DropdownItem> : null}
+          {!user.admin && items.length > 0
+            ? items.map((i, k) => {
+                return (
+                  <DropdownItem key={k}>
+                    {i.name} {i.price}
+                  </DropdownItem>
+                );
+              })
+            : null}
         </DropdownMenu>
       </UncontrolledDropdown>
     </React.Fragment>
