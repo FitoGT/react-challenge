@@ -6,7 +6,7 @@ import NavDivider from './components/NavDivider';
 import NavSingleItem from './components/NavSingleItem';
 import NavDropdownItem from './components/NavDropdownItem';
 import PageAlertContext from '../PageAlert/PageAlertContext';
-
+import { useSelector } from 'react-redux';
 export default class SidebarNav extends Component {
   constructor(props) {
     super(props);
@@ -49,9 +49,9 @@ export default class SidebarNav extends Component {
                 <NavBrand logo={this.props.logo} logoText={this.props.logoText} />
                 <nav>
                   <ul id="main-menu">
-                    {navItems(this.props.nav.top)}
-                    <NavSpacer />
-                    {navItems(this.props.nav.bottom)}
+                    {this.props.nav.map((item, key) => {
+                      return <Item item={item} key={key} />;
+                    })}
                   </ul>
                 </nav>
               </div>
@@ -61,5 +61,15 @@ export default class SidebarNav extends Component {
         }}
       </PageAlertContext.Consumer>
     );
+  }
+}
+
+function Item(item, key) {
+  let user = useSelector(state => state.loggedUser);
+  console.log(user,item.item);
+  if (item.item.admin == user.admin) {
+    return <NavSingleItem item={item.item} key={key} />;
+  }else{
+    return <div></div>
   }
 }

@@ -1,11 +1,14 @@
-export default {
-  top: [
-    {
-      name: 'Products',
-      url: '/products',
-      icon: 'Package',
-    },
-  ],
-  bottom: [
-  ],
-};
+export default [
+  {
+    name: 'Products',
+    url: '/products',
+    icon: 'Package',
+    admin:true
+  },
+  {
+    name: 'Shopping',
+    url: '/shopping',
+    icon: 'Cloud',
+    admin:false
+  },
+]
