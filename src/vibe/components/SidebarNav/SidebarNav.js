@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import NavSpacer from './components/NavSpacer';
 import NavOverlay from './components/NavOverlay';
 import NavDivider from './components/NavDivider';
 import NavSingleItem from './components/NavSingleItem';
@@ -66,7 +65,6 @@ export default class SidebarNav extends Component {
 
 function Item(item, key) {
   let user = useSelector(state => state.loggedUser);
-  console.log(user,item.item);
   if (item.item.admin == user.admin) {
     return <NavSingleItem item={item.item} key={key} />;
   }else{
