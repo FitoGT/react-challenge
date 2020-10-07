@@ -17,7 +17,7 @@ function Shoppin() {
             <Col md={6} key={key}>
               <Card>
                 <CardBody className="display-flex">
-                  <img src={p.image} style={{ width: 70, height: 70 }} />
+                  <img alt="product" src={p.image} style={{ width: 70, height: 70 }} />
                   <div className="m-l">
                     <h2 className="h4">{p.name}</h2>
                     <p className="text-muted">{p.price}</p>

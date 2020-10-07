@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavOverlay from './components/NavOverlay';
-import NavDivider from './components/NavDivider';
 import NavSingleItem from './components/NavSingleItem';
-import NavDropdownItem from './components/NavDropdownItem';
 import PageAlertContext from '../PageAlert/PageAlertContext';
 import { useSelector } from 'react-redux';
 export default class SidebarNav extends Component {
@@ -13,19 +11,6 @@ export default class SidebarNav extends Component {
   }
 
   render() {
-    const navItems = items => {
-      return items.map((item, index) => itemType(item, index));
-    };
-
-    const itemType = (item, index) => {
-      if (item.children) {
-        return <NavDropdownItem key={index} item={item} isSidebarCollapsed={this.props.isSidebarCollapsed} />;
-      } else if (item.divider) {
-        return <NavDivider key={index} />;
-      } else {
-        return <NavSingleItem item={item} key={index} />;
-      }
-    };
 
     const NavBrand = ({ logo, logoText }) => {
       return (
@@ -65,7 +50,7 @@ export default class SidebarNav extends Component {
 
 function Item(item, key) {
   let user = useSelector(state => state.loggedUser);
-  if (item.item.admin == user.admin) {
+  if (item.item.admin === user.admin) {
     return <NavSingleItem item={item.item} key={key} />;
   }else{
     return <div></div>

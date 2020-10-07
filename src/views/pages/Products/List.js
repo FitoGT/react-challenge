@@ -36,7 +36,7 @@ function List(props) {
                   <th scope="row">{key + 1}</th>
                   <td>{l.name}</td>
                   <td>{l.price}</td>
-                  <td><img src={l.image} style={{ width: 70, height: 70 }} /></td>
+                  <td><img alt="product" src={l.image} style={{ width: 70, height: 70 }} /></td>
                   <td>
                     <button title="delete" onClick={() => removeItem(key)} className="btn btn-danger">
                       <i className="fa fa-trash"></i>
