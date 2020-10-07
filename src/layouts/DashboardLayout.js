@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Header, SidebarNav, PageContent, Page} from '../vibe';
 import Logo from '../assets/images/vibe-logo.svg';
@@ -96,6 +96,7 @@ export default class DashboardLayout extends Component {
 function HeaderNav() {
   let user = useSelector(state=>state.loggedUser)
   const dispatch = useDispatch()
+  const history = useHistory();
   return (
     <React.Fragment>
       <UncontrolledDropdown nav inNavbar>
@@ -103,7 +104,7 @@ function HeaderNav() {
           Welcome {user.user}
         </DropdownToggle>
         <DropdownMenu right>
-        <DropdownItem onClick={()=>dispatch(logout(false))}>Logout</DropdownItem>
+        <DropdownItem onClick={()=>{dispatch(logout(false)); history.push('/home')}}>Logout</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </React.Fragment>
