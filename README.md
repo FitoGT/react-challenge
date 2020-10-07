@@ -28,5 +28,6 @@ Luego que se instalen las dependencias ejecutar
 
 ### Usar la aplicacion
 
-Ingrese usando un usuario y contraseña que usted elija. 
+Ingrese usando un usuario y contraseña que usted elija y seleccionando si es Administrador o Cliente. 
 El front validara que los campos esten completos y por redux establecera el estado logeado para que que pueda usar la aplicacion.
+Si selecciono Administrador va a poder dar de alta productos, listarlos y modificarlos, de lo contrario solo podra listarlos
